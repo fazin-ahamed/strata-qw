@@ -1,0 +1,22 @@
+{
+  "name": "@strata/database",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "migrate": "node dist/migrate.js",
+    "seed": "node dist/seed.js",
+    "build": "tsc",
+    "lint": "eslint src --ext .ts"
+  },
+  "dependencies": {
+    "pg": "^8.11.3",
+    "pgvector": "^0.1.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/pg": "^8.10.9",
+    "typescript": "^5.3.3",
+    "eslint": "^8.56.0"
+  }
+}

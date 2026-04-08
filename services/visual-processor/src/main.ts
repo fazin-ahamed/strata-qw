@@ -1,23 +1,26 @@
 import { NestFactory } from '@nestjs/core';
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { VisualProcessorModule } from './visual-processor.module';
+import { ValidationPipe } from '@nestjs/common';
+import { VisualProcessorModule } from './visual-processor.controller';
 
 async function bootstrap() {
   const app = await NestFactory.create(VisualProcessorModule);
-
-  // Connect to Redis for message queues
-  app.connectMicroservice<MicroserviceOptions>({
-    transport: Transport.REDIS,
-    options: {
-      host: process.env.REDIS_HOST || 'localhost',
-      port: parseInt(process.env.REDIS_PORT || '6379', 10),
-    },
-  });
-
-  await app.startAllMicroservices();
   
-  await app.listen(3005);
-  console.log('Visual Processor Service is running on port 3005');
+  // Enable CORS for frontend apps
+  app.enableCors({
+    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    credentials: true,
+  });
+  
+  // Global validation
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    transform: true,
+  }));
+  
+  const port = process.env.PORT || 4006;
+  await app.listen(port);
+  
+  console.log(`🎨 Visual Processor Service running on http://localhost:${port}`);
 }
 
 bootstrap();

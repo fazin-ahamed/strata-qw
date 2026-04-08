@@ -10,7 +10,8 @@
     "test": "turbo run test",
     "clean": "turbo run clean && rm -rf node_modules",
     "db:migrate": "pnpm --filter @strata/database migrate",
-    "db:seed": "pnpm --filter @strata/database seed"
+    "db:seed": "pnpm --filter @strata/database seed",
+    "install:all": "pnpm install && pnpm --filter @strata/database install"
   },
   "keywords": ["ai", "operating-system", "business-intelligence", "personal-ai"],
   "author": "Strata Team",

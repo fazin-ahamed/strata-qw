@@ -1,53 +1,129 @@
-# Strata Platform
+# Strata Platform - Quick Start Guide
 
 A unified AI operating system for business (Flare) and personal life (Lyvo), built on a shared intelligence core.
 
-## Core Principle
+## Prerequisites
 
-**Own the data layer. Deliver proactive intelligence. Build compounding memory.**
+- **Node.js** >= 18.0.0
+- **pnpm** >= 9.0.0  
+- **Docker** & Docker Compose
 
-## Architecture Overview
+## Installation Steps
 
-```
-Strata Platform
-├── Flare (Business Copilot)
-├── Lyvo (Personal AI)
-└── Shared Core
-    ├── Connector Framework
-    ├── AI Inference Layer
-    ├── Entity Memory Graph
-    ├── Decision Engine
-    ├── Anomaly + Prediction Engine
-    ├── Task Orchestrator
-    ├── Context Engine
-    ├── Notification Router
-    └── Auth & RBAC
+### 1. Install Dependencies
+
+```bash
+pnpm install
 ```
 
-## Monorepo Structure
+### 2. Start Infrastructure (Docker)
+
+```bash
+docker compose up -d postgres redis clickhouse localstack
+```
+
+Wait for all services to be healthy (about 30 seconds).
+
+### 3. Run Database Migrations
+
+```bash
+pnpm db:migrate
+```
+
+This creates all tables in PostgreSQL including the Entity Memory Graph schema with pgvector.
+
+### 4. Start Development Servers
+
+```bash
+pnpm dev
+```
+
+This starts all services in development mode with hot-reloading.
+
+## Access Points
+
+Once everything is running:
+
+| Service | URL/Port | Description |
+|---------|----------|-------------|
+| **Flare** | http://localhost:3000 | Business Dashboard |
+| **Lyvo** | http://localhost:3001 | Personal Assistant |
+| **API Gateway** | http://localhost:4000 | Main REST API |
+| **PostgreSQL** | localhost:5432 | Primary Database |
+| **Redis** | localhost:6379 | Cache & Queues |
+| **ClickHouse** | localhost:8123 | Analytics DB |
+| **LocalStack** | localhost:4566 | AWS Mock Services |
+
+## Common Commands
+
+```bash
+pnpm dev              # Start all services in dev mode
+pnpm build            # Build all packages
+pnpm lint             # Run ESLint
+pnpm test             # Run test suites
+pnpm clean            # Remove build artifacts
+pnpm db:migrate       # Apply database migrations
+pnpm db:seed          # Seed sample data
+```
+
+## Troubleshooting
+
+### "Missing script: migrate" Error
+The migration script has been fixed. Run:
+```bash
+pnpm db:migrate
+```
+
+### Turbo Pipeline Error
+The `turbo.json` has been updated from `pipeline` to `tasks` format for Turbo v2 compatibility.
+
+### Docker Connection Issues
+Ensure Docker Desktop is running and you have permissions:
+```bash
+docker info
+```
+
+### Database Connection Failed
+Make sure PostgreSQL container is running:
+```bash
+docker compose ps
+docker compose logs postgres
+```
+
+## Project Structure
 
 ```
-/workspace
-├── apps/
-│   ├── flare/              # Business web application (Next.js)
-│   └── lyvo/               # Personal mobile app (React Native)
-├── services/
-│   ├── api/                # Main API gateway (NestJS, Port 3001)
-│   ├── pipeline/           # Data processing pipeline (Port 3002)
-│   ├── ai/                 # AI inference layer (Port 3003)
-│   ├── transcription/      # Meeting transcription (Port 3004)
-│   ├── capture-agent/      # Desktop capture agent (Electron)
-│   ├── visual-processor/   # Screenshot analysis (Port 3005)
-│   ├── decision-engine/    # Decision support system
-│   ├── orchestrator/       # Task execution engine
-│   ├── context-engine/     # Relevance filtering
-│   └── notifications/      # Notification routing
-├── packages/
-│   ├── @strata/shared/     # Shared types and utilities
-│   └── @strata/connectors/ # Data source connectors
-└── infrastructure/
-    └── database/           # Database schemas and migrations
+strata/
+├── apps/                    # Frontend applications
+│   ├── flare/              # Business dashboard (Next.js)
+│   └── lyvo/               # Personal assistant (React Native)
+├── services/               # Backend microservices
+│   ├── api/               # API Gateway (Port 4000)
+│   ├── decision-engine/   # Recommendations (Port 4001)
+│   ├── orchestrator/      # Task execution (Port 4002)
+│   ├── context-engine/    # Relevance filtering (Port 4003)
+│   ├── ai/                # LLM orchestration (Port 4004)
+│   ├── transcription/     # Whisper service (Port 4005)
+│   ├── notifications/     # Notifications (Port 4006)
+│   ├── pipeline/          # Data ingestion (Port 4007)
+│   ├── visual-processor/  # Screenshot analysis (Port 4008)
+│   └── capture-agent/     # Meeting capture (Electron)
+├── packages/              # Shared libraries
+│   ├── shared/           # Common types & utilities
+│   └── connectors/       # Third-party integrations
+└── infrastructure/        # DevOps & database
+    ├── database/         # Schema & migrations
+    └── docker/           # Container configs
 ```
+
+## Next Steps
+
+1. **Configure Environment**: Copy `.env.example` files and add your API keys
+2. **Explore Flare**: Visit http://localhost:3000 to see the business dashboard
+3. **Try Lyvo**: Visit http://localhost:3001 for the personal assistant
+4. **Test API**: Make requests to http://localhost:4000/api/health
+
+For detailed documentation, see `/docs` directory.
 
 ## Services
 

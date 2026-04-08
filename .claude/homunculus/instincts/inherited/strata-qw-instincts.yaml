@@ -1,0 +1,413 @@
+# Instincts generated from https://github.com/fazin-ahamed/strata-qw
+# Generated: 2026-04-08T18:07:12.429Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: strata-qw-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/fazin-ahamed/strata-qw
+---
+
+# Strata Qw Commit Length
+
+## Action
+
+Write moderate-length commit messages (~61 characters)
+
+## Evidence
+
+- Average commit message length: 61 chars
+- Based on 1 commits
+
+---
+id: strata-qw-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/fazin-ahamed/strata-qw
+---
+
+# Strata Qw Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: strata-qw-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/fazin-ahamed/strata-qw
+---
+
+# Strata Qw Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: strata-qw-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/fazin-ahamed/strata-qw
+---
+
+# Strata Qw Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: strata-qw-arch-feature-based
+trigger: "when adding a new feature"
+confidence: 0.85
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/fazin-ahamed/strata-qw
+---
+
+# Strata Qw Arch Feature Based
+
+## Action
+
+Create a new folder in src/features/ with all related code colocated
+
+## Evidence
+
+- Feature-based module organization detected
+- Structure: src/features/[feature-name]/
+
+---
+id: strata-qw-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/fazin-ahamed/strata-qw
+---
+
+# Strata Qw Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: strata-qw-instinct-camelcase-files
+trigger: "When creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Camelcase Files
+
+## Action
+
+Name the file using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.files
+
+---
+id: strata-qw-instinct-camelcase-functions
+trigger: "When defining a function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Camelcase Functions
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Pattern in namingConventions.functions
+
+---
+id: strata-qw-instinct-pascalcase-classes
+trigger: "When defining a class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Pascalcase Classes
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Pattern in namingConventions.classes
+
+---
+id: strata-qw-instinct-screaming-constants
+trigger: "When defining a constant"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Screaming Constants
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Pattern in namingConventions.constants
+
+---
+id: strata-qw-instinct-relative-imports
+trigger: "When importing modules"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Relative Imports
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- Pattern in importStyle
+
+---
+id: strata-qw-instinct-named-exports
+trigger: "When exporting modules or functions"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Named Exports
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- Pattern in exportStyle
+
+---
+id: strata-qw-instinct-try-catch-errors
+trigger: "When handling errors in code"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Try Catch Errors
+
+## Action
+
+Use try-catch blocks for error handling
+
+## Evidence
+
+- Pattern in errorHandling.style
+
+---
+id: strata-qw-instinct-no-custom-error-classes
+trigger: "When defining error handling logic"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct No Custom Error Classes
+
+## Action
+
+Do not create custom error classes
+
+## Evidence
+
+- Pattern in errorHandling.customErrorClasses
+
+---
+id: strata-qw-instinct-no-error-boundaries
+trigger: "When implementing error boundaries"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct No Error Boundaries
+
+## Action
+
+Do not implement error boundaries
+
+## Evidence
+
+- Pattern in errorHandling.errorBoundaries
+
+---
+id: strata-qw-instinct-no-global-error-handler
+trigger: "When considering a global error handler"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct No Global Error Handler
+
+## Action
+
+Do not implement a global error handler
+
+## Evidence
+
+- Pattern in errorHandling.globalHandler
+
+---
+id: strata-qw-instinct-monorepo-turborepo-structure
+trigger: "When adding new packages or services"
+confidence: 0.9
+domain: architecture
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Monorepo Turborepo Structure
+
+## Action
+
+Place them in the appropriate folder under 'services', 'infrastructure', 'packages', or 'apps' as per turborepo structure
+
+## Evidence
+
+- Pattern in folderStructure.commonFolders
+- Initial monorepo setup with core services and database schema
+
+---
+id: strata-qw-instinct-feature-based-modules
+trigger: "When organizing code modules"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Feature Based Modules
+
+## Action
+
+Organize modules by feature
+
+## Evidence
+
+- Pattern in moduleOrganization
+
+---
+id: strata-qw-instinct-separate-tests
+trigger: "When adding tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Separate Tests
+
+## Action
+
+Place tests in a separate location from source code
+
+## Evidence
+
+- Pattern in folderStructure.testLocation
+
+---
+id: strata-qw-instinct-git-freeform-commits
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Git Freeform Commits
+
+## Action
+
+Use a freeform commit message without a specific prefix
+
+## Evidence
+
+- Pattern in commits.type
+- Initial monorepo setup with core services and database schema
+
+---
+id: strata-qw-instinct-git-commit-length
+trigger: "When writing a commit message"
+confidence: 0.7
+domain: git
+source: repo-analysis
+source_repo: fazin-ahamed/strata-qw
+---
+
+# Strata Qw Instinct Git Commit Length
+
+## Action
+
+Keep the commit message concise, around 60 characters on average
+
+## Evidence
+
+- Pattern in commits.averageLength
+

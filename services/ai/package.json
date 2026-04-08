@@ -15,7 +15,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/microservices": "^10.0.0",
     "@nestjs/config": "^3.0.0",
-    "@strata/shared": "*",
+    "@strata/shared": "workspace:*",
     "bullmq": "^5.1.0",
     "redis": "^4.6.12",
     "zod": "^3.22.4",
